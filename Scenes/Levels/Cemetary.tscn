@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://byq5txek87lsy"]
+
+[ext_resource type="Texture2D" uid="uid://bbw3c5m1icihk" path="res://Textures/Moon.png" id="1_b7uiw"]
+[ext_resource type="Material" uid="uid://d3ntfmyqs2qdv" path="res://Materials/M_Floor.tres" id="2_ao84u"]
+[ext_resource type="Material" uid="uid://dug1j5vid5p5h" path="res://Materials/M_Wall.tres" id="3_r6vcu"]
+[ext_resource type="PackedScene" uid="uid://bfxb7tkews1nd" path="res://Scenes/Player/Player.tscn" id="4_6hska"]
+[ext_resource type="PackedScene" uid="uid://dq88bft1trd2m" path="res://Scenes/UI/HUD.tscn" id="5_qjlnc"]
+[ext_resource type="Script" uid="uid://b8boqxly4cl5n" path="res://Scripts/Enemies/EnemyManager.cs" id="6_2lumg"]
+[ext_resource type="PackedScene" uid="uid://dxh2fcyascu0p" path="res://Scenes/Enemies/Enemy.tscn" id="7_r7fn1"]
+
+[sub_resource type="Gradient" id="Gradient_6bbs4"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5hlfc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qn4q4"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_5hlfc")
+color_ramp = SubResource("Gradient_6bbs4")
+seamless = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k03m2"]
+sky_top_color = Color(0.00404537, 0.013333365, 0.07591971, 1)
+sky_horizon_color = Color(0.04627218, 0.3144105, 0.55959857, 1)
+sky_curve = 0.049481563
+sky_cover = SubResource("NoiseTexture2D_qn4q4")
+sky_cover_modulate = Color(0.57700837, 0.5770084, 0.57700837, 1)
+ground_bottom_color = Color(0.1429972, 0.16333571, 0.19934648, 1)
+ground_horizon_color = Color(0.05122146, 0.33016837, 0.58162934, 1)
+
+[sub_resource type="Sky" id="Sky_oob4b"]
+sky_material = SubResource("ProceduralSkyMaterial_k03m2")
+radiance_size = 1
+
+[sub_resource type="Environment" id="Environment_7k3gu"]
+background_mode = 2
+sky = SubResource("Sky_oob4b")
+tonemap_mode = 3
+fog_mode = 1
+fog_density = 1.0
+volumetric_fog_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hlfc"]
+transparency = 1
+disable_fog = true
+albedo_color = Color(3.5629182, 3.5629182, 3.5629182, 1)
+albedo_texture = ExtResource("1_b7uiw")
+
+[sub_resource type="Curve3D" id="Curve3D_6bbs4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -45, 0, -25, 0, 0, 0, 0, 0, 0, -45, 0, 45, 0, 0, 0, 0, 0, 0, 45, 0, 45, 0, 0, 0, 0, 0, 0, 45, 0, -25),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="Cemetary" type="Node" unique_id=958600874]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2095187060]
+environment = SubResource("Environment_7k3gu")
+
+[node name="Sprite3D" type="Sprite3D" parent="WorldEnvironment" unique_id=2053120502]
+transform = Transform3D(-42.67767, 68.30127, 59.275234, -5.244525, 63.564556, -77.01975, -90.2835, -35.97894, -23.545797, -1660.5002, 1180.1001, 655.10004)
+material_override = SubResource("StandardMaterial3D_5hlfc")
+texture = ExtResource("1_b7uiw")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldEnvironment" unique_id=8402682]
+transform = Transform3D(0.41147587, 0.50364876, -0.7596219, 0.033158135, 0.8246243, 0.56470823, 0.9108173, -0.25755146, 0.32261297, -32.069023, 44.02883, -24.568195)
+light_color = Color(6.930828e-06, 0.59106034, 0.78630275, 1)
+light_energy = 200.0
+light_volumetric_fog_energy = 0.0
+spot_range = 56.27084
+spot_angle = 42.214825
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1621464408]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1184083278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 3.6000004)
+size = Vector3(185.90001, 0.3, 189.2)
+material = ExtResource("2_ao84u")
+
+[node name="Wall" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1407221321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.100001, -45.049995)
+size = Vector3(28.800001, 18.2, 24.9)
+material = ExtResource("3_r6vcu")
+
+[node name="Wall9" type="CSGBox3D" parent="CSGCombiner3D" unique_id=251693706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6499992, -41.299995)
+size = Vector3(55.8, 7.1, 26.4)
+material = ExtResource("3_r6vcu")
+
+[node name="Wall4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2086210343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 7.6500006, -46.899998)
+size = Vector3(24.2, 13.3, 17)
+material = ExtResource("3_r6vcu")
+
+[node name="Wall7" type="CSGBox3D" parent="CSGCombiner3D" unique_id=560196860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4500012, 29.000002, -41.999996)
+size = Vector3(11.2, 20.4, 11.5)
+material = ExtResource("3_r6vcu")
+
+[node name="Wall8" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1654823962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 6.050002, -42.599995)
+size = Vector3(13.900001, 12.3, 11.5)
+material = ExtResource("3_r6vcu")
+
+[node name="Wall2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2028568220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049999237, 0.5500001, -14.599996)
+size = Vector3(50.5, 1.5, 0.6)
+material = ExtResource("3_r6vcu")
+
+[node name="Wall3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=162726839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049999237, 0.5500001, 24.600006)
+size = Vector3(50.7, 1.5, 0.6)
+material = ExtResource("3_r6vcu")
+
+[node name="Wall5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=210673594]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 25, 0.55, 4.9000006)
+size = Vector3(39.4, 1.5, 0.6)
+material = ExtResource("3_r6vcu")
+
+[node name="Wall6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=382837999]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25, 0.55, 4.9000006)
+size = Vector3(39.4, 1.5, 0.6)
+material = ExtResource("3_r6vcu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=970009093]
+transform = Transform3D(0.10326217, 0.6073217, -0.7877165, -0.32728744, 0.7685959, 0.5496755, 0.93926567, 0.20104909, 0.27813566, 0, 3.478927, 0)
+light_color = Color(0.6540541, 0.79850435, 1, 1)
+light_energy = 0.5
+light_volumetric_fog_energy = 0.1
+shadow_enabled = true
+shadow_bias = 0.02
+shadow_opacity = 0.5
+shadow_blur = 0.5
+
+[node name="Player" parent="." unique_id=922229206 instance=ExtResource("4_6hska")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 7.5)
+
+[node name="Hud" parent="." unique_id=1009057373 instance=ExtResource("5_qjlnc")]
+
+[node name="EnemyManager" type="Node" parent="." unique_id=1540103171 node_paths=PackedStringArray("_spawnBoundary", "_enemyRoot")]
+script = ExtResource("6_2lumg")
+_spawnBoundary = NodePath("SpawnBoundary")
+_spawnHeightRange = Vector2(-2, 8)
+_enemyScene = ExtResource("7_r7fn1")
+_enemyRoot = NodePath("EnemyRoot")
+metadata/_custom_type_script = "uid://b8boqxly4cl5n"
+
+[node name="SpawnBoundary" type="Path3D" parent="EnemyManager" unique_id=373098236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+curve = SubResource("Curve3D_6bbs4")
+
+[node name="EnemyRoot" type="Node3D" parent="EnemyManager" unique_id=664786619]

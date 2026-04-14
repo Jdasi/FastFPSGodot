@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://bfxb7tkews1nd"]
+
+[ext_resource type="Script" uid="uid://ceoa82xpk4mqp" path="res://Scripts/Player/Player.cs" id="1_ft8w5"]
+[ext_resource type="PackedScene" uid="uid://b84yfkea7ww7c" path="res://Scenes/Weapons/Magnum/Magnum.tscn" id="2_h54ih"]
+[ext_resource type="Resource" uid="uid://c3dem4g6y3iy" path="res://Resources/PlayerStats.tres" id="2_ude3g"]
+[ext_resource type="Script" uid="uid://ck6ky6ag5sxhx" path="res://Scripts/Player/ArmsBobber.cs" id="3_ude3g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l2ndj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3lat"]
+transparency = 1
+albedo_color = Color(0, 0.16066755, 0.69099766, 0.23529412)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l2ndj"]
+
+[sub_resource type="Animation" id="Animation_jmcll"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ViewRoot/Camera:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ViewRoot/ArmsRoot/Magnum:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ViewRoot/ArmsRoot/Magnum:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ude3g"]
+resource_name = "fire"
+length = 0.23333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ViewRoot/Camera:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06660623, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.014992379, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ViewRoot/ArmsRoot/Magnum:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.06228113, 0.07167536), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ViewRoot/ArmsRoot/Magnum:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06660623, 0.13671805, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.13812536, 0, 0), Vector3(0.33041316, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jmcll"]
+_data = {
+&"RESET": SubResource("Animation_jmcll"),
+&"fire": SubResource("Animation_ude3g")
+}
+
+[node name="Player" type="RigidBody3D" unique_id=887016430 node_paths=PackedStringArray("_viewRoot", "_animator", "_camera3D", "_rayCast", "_weapon") groups=["player"]]
+collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_damp = 0.2
+script = ExtResource("1_ft8w5")
+_stats = ExtResource("2_ude3g")
+_viewRoot = NodePath("ViewRoot")
+_animator = NodePath("AnimationPlayer")
+_camera3D = NodePath("ViewRoot/Camera")
+_rayCast = NodePath("ViewRoot/RayCast3D")
+_weapon = NodePath("ViewRoot/ArmsRoot/Magnum")
+metadata/_custom_type_script = "uid://ceoa82xpk4mqp"
+
+[node name="ViewRoot" type="Node3D" parent="." unique_id=1291877735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera" type="Camera3D" parent="ViewRoot" unique_id=1114569077]
+current = true
+fov = 80.0
+near = 0.01
+
+[node name="RayCast3D" type="RayCast3D" parent="ViewRoot" unique_id=573083287]
+enabled = false
+exclude_parent = false
+target_position = Vector3(0, 0, -100)
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="ArmsRoot" type="Node3D" parent="ViewRoot" unique_id=1149902103 node_paths=PackedStringArray("_camera", "_player")]
+transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, 0.03244946, -0.03133619, -0.13)
+script = ExtResource("3_ude3g")
+_camera = NodePath("../Camera")
+_player = NodePath("")
+
+[node name="Magnum" parent="ViewRoot/ArmsRoot" unique_id=2111901531 instance=ExtResource("2_h54ih")]
+
+[node name="Backlight" type="OmniLight3D" parent="ViewRoot" unique_id=544503492]
+light_color = Color(0, 0.17358473, 0.35690477, 1)
+light_energy = 0.2
+light_volumetric_fog_energy = 0.0
+omni_range = 1.5400956
+
+[node name="CapsuleCollider" type="CollisionShape3D" parent="." unique_id=49709079]
+shape = SubResource("CapsuleShape3D_l2ndj")
+
+[node name="TempVisual" type="MeshInstance3D" parent="." unique_id=987233123]
+material_override = SubResource("StandardMaterial3D_q3lat")
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_l2ndj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=195169028]
+libraries/ = SubResource("AnimationLibrary_jmcll")

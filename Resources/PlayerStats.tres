@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://c3dem4g6y3iy"]
+
+[ext_resource type="Script" uid="uid://dqddd1u87x3ql" path="res://Scripts/Player/PlayerStats.cs" id="1_c26vb"]
+
+[resource]
+script = ExtResource("1_c26vb")
+RunSpeed = 20.0
+LeanAmount = 8.0
+LeanSpeed = 5.0
+metadata/_custom_type_script = "uid://dqddd1u87x3ql"

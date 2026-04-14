@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dxh2fcyascu0p"]
+
+[ext_resource type="Script" uid="uid://bsdgsstogl35h" path="res://Scripts/Enemies/Enemy.cs" id="1_bkvnc"]
+
+[sub_resource type="Curve" id="Curve_bkvnc"]
+_limits = [0.0, 2.0, 0.0, 50.0]
+_data = [Vector2(0, 1.4), 0.0, -0.053132016, 0, 0, Vector2(50, 0.15), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gilx"]
+transparency = 1
+albedo_color = Color(0, 0.8666668, 1, 0.5058824)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0gilx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkvnc"]
+transparency = 1
+albedo_color = Color(0, 1.5253388, 1.753959, 0.5058824)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bkvnc"]
+radius = 0.5994554
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4isyn"]
+radius = 0.50035346
+
+[node name="Enemy" type="Area3D" unique_id=1358426250 node_paths=PackedStringArray("_hurtBoxArea")]
+collision_mask = 0
+priority = 1
+script = ExtResource("1_bkvnc")
+_turnForce = SubResource("Curve_bkvnc")
+_hurtBoxArea = NodePath("HurtBoxArea")
+metadata/_custom_type_script = "uid://bsdgsstogl35h"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1955917984]
+material_override = SubResource("StandardMaterial3D_0gilx")
+mesh = SubResource("SphereMesh_0gilx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=25898247]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.3, 0, 0, -0.40000004)
+material_override = SubResource("StandardMaterial3D_bkvnc")
+mesh = SubResource("SphereMesh_0gilx")
+
+[node name="HitBox" type="CollisionShape3D" parent="." unique_id=388867903]
+shape = SubResource("SphereShape3D_bkvnc")
+
+[node name="HurtBoxArea" type="Area3D" parent="." unique_id=1540267698]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HurtBoxShape" type="CollisionShape3D" parent="HurtBoxArea" unique_id=906849065]
+shape = SubResource("SphereShape3D_4isyn")
+debug_color = Color(0.77, 0, 0.20533313, 1)

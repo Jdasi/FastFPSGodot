@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://7wmuxbg82c86"]
+
+[ext_resource type="Texture2D" uid="uid://d75i0mk46sb1" path="res://Models/Magnum/MainTex.png" id="1_rsr84"]
+
+[resource]
+albedo_texture = ExtResource("1_rsr84")
+metallic_specular = 0.0
+texture_filter = 0
+texture_repeat = false
+grow_amount = 0.1
+z_clip_scale = 0.1

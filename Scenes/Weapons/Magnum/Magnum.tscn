@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://b84yfkea7ww7c"]
+
+[ext_resource type="Script" uid="uid://by3hldenobsl0" path="res://Scripts/Weapons/Weapon.cs" id="1_4a0py"]
+[ext_resource type="PackedScene" uid="uid://duxsk588e1x7b" path="res://Models/Magnum/Magnum.fbx" id="1_4s1h5"]
+[ext_resource type="Script" uid="uid://cto8cpkk2r1y1" path="res://Scripts/Weapons/MuzzleFlash.cs" id="3_btw2l"]
+[ext_resource type="Texture2D" uid="uid://b5prolyesrl8k" path="res://Textures/MuzzleFlash/MuzzleFlashPlaneTexture.png" id="4_4casm"]
+[ext_resource type="ArrayMesh" uid="uid://b54jxv8dlkgln" path="res://Models/MuzzleFlash/MuzzleFlashPlanes.obj" id="4_aw17i"]
+[ext_resource type="Texture2D" uid="uid://blbkd5v1kflc8" path="res://Textures/MuzzleFlash/MuzzleFlashConeTexture.png" id="6_o1ksb"]
+[ext_resource type="ArrayMesh" uid="uid://d33s2c0e2mfao" path="res://Models/MuzzleFlash/MuzzleFlashCone.obj" id="7_yedu7"]
+[ext_resource type="Texture2D" uid="uid://bb0qska3fha2d" path="res://Textures/MuzzleFlash/MuzzleFlashSpotTexture.png" id="8_yedu7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3n660"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+disable_fog = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("4_4casm")
+
+[sub_resource type="Curve" id="Curve_3n660"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o1ksb"]
+curve = SubResource("Curve_3n660")
+
+[sub_resource type="Curve" id="Curve_4casm"]
+_data = [Vector2(1e-05, 0), 0.0, 1.2394886, 0, 0, Vector2(1, 0.57303375), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3n660"]
+curve = SubResource("Curve_4casm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aw17i"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_3n660")
+color = Color(1.4369954, 1.0487798, 0, 1)
+alpha_curve = SubResource("CurveTexture_o1ksb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1ksb"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+disable_fog = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("6_o1ksb")
+
+[sub_resource type="Curve" id="Curve_8r3aj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_l8vhr"]
+curve = SubResource("Curve_8r3aj")
+
+[sub_resource type="Curve" id="Curve_o1ksb"]
+_data = [Vector2(0, 0), 0.0, 1.0443201, 0, 0, Vector2(1, 0.47191018), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yedu7"]
+curve = SubResource("Curve_o1ksb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vvlv2"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_yedu7")
+color = Color(1.4369954, 1.0487798, 0, 1)
+alpha_curve = SubResource("CurveTexture_l8vhr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8r3aj"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+disable_fog = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("8_yedu7")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_yedu7"]
+_data = [Vector2(0, 1), 0.0, -2.4075935, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8r3aj"]
+curve = SubResource("Curve_yedu7")
+
+[sub_resource type="Curve" id="Curve_l8vhr"]
+_data = [Vector2(0, 0), 0.0, 1.9181384, 0, 0, Vector2(1, 0.7865169), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vvlv2"]
+curve = SubResource("Curve_l8vhr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0grv7"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_vvlv2")
+color = Color(1.4369954, 1.0487798, 0, 1)
+alpha_curve = SubResource("CurveTexture_8r3aj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_o1ksb"]
+
+[node name="Magnum" type="Node3D" unique_id=2111901531 node_paths=PackedStringArray("_muzzleFlash")]
+script = ExtResource("1_4a0py")
+_damage = 15
+_muzzleFlash = NodePath("ShootPoint/MuzzleFlash")
+metadata/_custom_type_script = "uid://by3hldenobsl0"
+
+[node name="Model" parent="." unique_id=43605077 instance=ExtResource("1_4s1h5")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="ShootPoint" type="Node3D" parent="." unique_id=1115559592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058451787, -0.32172176)
+
+[node name="MuzzleFlash" type="Node3D" parent="ShootPoint" unique_id=1152601108 node_paths=PackedStringArray("_light", "_planes", "_cone", "_flash")]
+script = ExtResource("3_btw2l")
+_duration = 0.11
+_light = NodePath("OmniLight3D")
+_planes = NodePath("MuzzlePlanes")
+_cone = NodePath("MuzzleCone")
+_flash = NodePath("SpotFlash")
+metadata/_custom_type_script = "uid://cto8cpkk2r1y1"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ShootPoint/MuzzleFlash" unique_id=194320098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03733313, 0, 0)
+visible = false
+light_color = Color(1, 0.84375, 0, 1)
+light_volumetric_fog_energy = 0.0
+omni_range = 2.5253084
+
+[node name="MuzzlePlanes" type="GPUParticles3D" parent="ShootPoint/MuzzleFlash" unique_id=595203536]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 9.208501e-09, 0, 0.060985148)
+material_override = SubResource("StandardMaterial3D_3n660")
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.08
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_aw17i")
+draw_pass_1 = ExtResource("4_aw17i")
+
+[node name="MuzzleCone" type="GPUParticles3D" parent="ShootPoint/MuzzleFlash" unique_id=1065262167]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_o1ksb")
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.08
+one_shot = true
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_vvlv2")
+draw_pass_1 = ExtResource("7_yedu7")
+
+[node name="SpotFlash" type="GPUParticles3D" parent="ShootPoint/MuzzleFlash" unique_id=258514273]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_8r3aj")
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.08
+one_shot = true
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_0grv7")
+draw_pass_1 = SubResource("QuadMesh_o1ksb")

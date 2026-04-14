@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dq88bft1trd2m"]
+
+[ext_resource type="Script" uid="uid://cbsr0l76c58o" path="res://Scripts/UI/HUD.cs" id="1_yixhe"]
+[ext_resource type="Texture2D" uid="uid://darolgnftr28g" path="res://Textures/Dot.png" id="2_4n7mi"]
+[ext_resource type="Texture2D" uid="uid://dw407fl7wqlf0" path="res://Textures/Heart.png" id="2_ijstf"]
+
+[node name="Hud" type="CanvasLayer" unique_id=886344525 node_paths=PackedStringArray("_healthLabel")]
+script = ExtResource("1_yixhe")
+_healthLabel = NodePath("Control/Health/Label")
+metadata/_custom_type_script = "uid://cbsr0l76c58o"
+
+[node name="Control" type="Control" parent="." unique_id=1697837998]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Health" type="Control" parent="Control" unique_id=1044283312]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -78.0
+offset_right = 140.0
+offset_bottom = -26.0
+grow_vertical = 0
+
+[node name="Heart" type="TextureRect" parent="Control/Health" unique_id=1756919914]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+offset_right = 60.0
+grow_vertical = 0
+size_flags_horizontal = 3
+texture = ExtResource("2_ijstf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/Health" unique_id=642251654]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = -45.0
+offset_right = 102.0
+offset_bottom = -9.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
+text = "100"
+vertical_alignment = 1
+
+[node name="Reticle" type="TextureRect" parent="Control" unique_id=920215526]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_4n7mi")
+expand_mode = 1
+stretch_mode = 5
